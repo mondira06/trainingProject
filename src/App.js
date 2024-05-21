@@ -1,13 +1,16 @@
-import Navbar from "./Components/Navbar";
-import SideBar from "./Components/SideBar";
-import UserPage from "./Components/UserPage";
+import AmountSetup from "./Components/AmountSetup";
+import ManageWinner from "./Components/ManageWinnerSettings";
+import Withdrawal from "./Components/ManageWithdrawalRequest";
 // import Navbar from "./Components/Navbar"
 function App() {
   return (
     <div className="App">
-      <SideBar/>
-      <UserPage/>
-      <Navbar/>
+      {/* <SideBar/> */}
+      {/* <UserPage/> */}
+      {/* <Navbar/> */}
+       {/* <AmountSetup/> */}
+      {/* <ManageWinner/> */}
+      <Withdrawal/>
     </div>
   );
 }
