@@ -8,9 +8,9 @@ function App() {
     <div className="App">
       {/* <UserPage /> */}
       {/* <Navbar /> */}
-      {/* <Dashboard /> */}
+      <Dashboard />
       {/* <Rewardsystem /> */}
-      <Appupi/>
+      {/* <Appupi/> */}
       
     </div>
   );
