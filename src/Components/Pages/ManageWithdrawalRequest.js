@@ -17,7 +17,7 @@ import TextField from '@mui/material/TextField';
 
 const drawerWidth = 240;
 
-function ManageUser(props) {
+function Withdrawal(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
@@ -47,6 +47,7 @@ function ManageUser(props) {
  
   
   
+  
   const handleChange = (event) => {
     setValue(event.target.value);
   };
@@ -61,7 +62,7 @@ function ManageUser(props) {
            flexGrow: 1, p:1, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
       >
        
-        <Typography variant="h5" sx={{p:3}}>Manage AdminUser</Typography>
+        <Typography variant="h5" sx={{p:3}}>Manage Withdrawal Request</Typography>
         <Box
       sx={{
         padding: 2, // Space between outer and inner box
@@ -69,11 +70,7 @@ function ManageUser(props) {
         backgroundColor:'white',
       }}
     >
-      <Box display="flex" justifyContent="flex-end" >
-        <Button variant="contained" sx={{marginBottom: 2,backgroundColor:'#D14444',color:'black'}}>Add New</Button>
-        </Box>
-        <hr/>
-        <Box display="flex" justifyContent="flex-end"  >
+         <Box display="flex" justifyContent="flex-end"  >
         <Typography paragraph sx={{marginTop:2,marginRight:2}}>Search</Typography>
         <TextField
         value={value}
@@ -81,7 +78,7 @@ function ManageUser(props) {
         // Add styles here if needed
       />
     </Box>
-    <hr/>
+    <Box>
         <Typography paragraph>
         <TableContainer component={Paper}>
       <Table aria-label="customized table">
@@ -91,15 +88,17 @@ function ManageUser(props) {
             <StyledTableCell align="right"><b>Role&nbsp;&nbsp;</b></StyledTableCell>
             <StyledTableCell align="right"><b>Task&nbsp;&nbsp;</b></StyledTableCell>
             <StyledTableCell align="right"><b>Action&nbsp;&nbsp;</b></StyledTableCell>
+            <StyledTableCell align="right"><b>Action2&nbsp;&nbsp;</b></StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-            <StyledTableRow>
+        <StyledTableRow>
               <StyledTableCell component="th" scope="row">
                 1
               </StyledTableCell>
               <StyledTableCell align="right">xyz</StyledTableCell>
               <StyledTableCell align="right">xyz</StyledTableCell>
+              <StyledTableCell align="right"></StyledTableCell>
               <StyledTableCell align="right"></StyledTableCell>
             </StyledTableRow>
             <StyledTableRow>
@@ -109,36 +108,31 @@ function ManageUser(props) {
               <StyledTableCell align="right">xyz</StyledTableCell>
               <StyledTableCell align="right">xyz</StyledTableCell>
               <StyledTableCell align="right"></StyledTableCell>
+              <StyledTableCell align="right"></StyledTableCell>
+            </StyledTableRow>
+            <StyledTableRow>
+              <StyledTableCell component="th" scope="row">
+                3
+              </StyledTableCell>
+              <StyledTableCell align="right">xyz</StyledTableCell>
+              <StyledTableCell align="right">xyz</StyledTableCell>
+              <StyledTableCell align="right"></StyledTableCell>
+              <StyledTableCell align="right"></StyledTableCell>
             </StyledTableRow>
         </TableBody>
       </Table>
     </TableContainer>
         </Typography>
-        <Box
-      sx={{
-        display: 'flex',
-        justifyContent: 'space-between', // Adjusts space between items
-        alignItems: 'center' // Vertically centers items if they have different heights
-      }}
-    >
-        <Typography paragraph>
-          Showing 1 to 2 of 2 entries
-        </Typography>
-        <Typography paragraph >
-        <StyledButton variant="text" sx={{border:1,color:'#D9D9D9'}}>Previous</StyledButton>
-<Button variant="contained">1</Button>
-<StyledButton variant="text" sx={{border:1,color:'#D9D9D9'}}>Next</StyledButton>
-</Typography>
+        
       </Box>
-      <hr/>
     </Box>
     </Box>
     </Box>
   );
 }
 
-ManageUser.propTypes = {
+Withdrawal.propTypes = {
   window: PropTypes.func,
 };
 
-export default ManageUser;
+export default Withdrawal;
