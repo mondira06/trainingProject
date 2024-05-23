@@ -17,22 +17,19 @@ import Typography from "@mui/material/Typography";
 import ScheduleIcon from "@mui/icons-material/Schedule";
 import SecurityIcon from "@mui/icons-material/Security";
 import TextSnippetIcon from "@mui/icons-material/TextSnippet";
-
+import { Link } from 'react-router-dom';
 const drawerWidth = 240;
-
 function ResponsiveDrawer(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-
   const drawer = (
     <div>
       <Box
         sx={{
-          backgroundColor: "#f44336",
+          backgroundColor: "#F44336",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
@@ -52,27 +49,65 @@ function ResponsiveDrawer(props) {
       </Box>
       <Box sx={{ backgroundColor: "#000000", height: "100%" }}>
         <List>
-          {[
-            "Dashboard",
-            "Manage Admin",
-            "Website Setting",
-            "Content Management",
-            "User Management",
-            "Order History",
-            "Manual Game",
-            "Game History",
-            "Trade History",
-            "Withdrawal Management",
-            "Recharge History",
-            "Reward Management",
-            "Complaints",
-          ].map((text, index) => (
+        {[
+            <Link to="/" style={{ color: "white", textDecoration: "none" }}>
+              Dashboard
+            </Link>,
+            <Link
+              to="/manage_admin"
+              style={{ color: "white", textDecoration: "none" }}
+            >
+              Manage Admin
+            </Link>,
+            <Link
+              to="/website_setting"
+              style={{ color: "white", textDecoration: "none" }}
+            >
+              Website Setting
+            </Link>,
+            <Link to="/" style={{ color: "white", textDecoration: "none" }}>
+              Content Management
+            </Link>,
+            <Link to="/" style={{ color: "white", textDecoration: "none" }}>
+              User Management
+            </Link>,
+            <Link to="/" style={{ color: "white", textDecoration: "none" }}>
+              Order History
+            </Link>,
+            <Link to="/" style={{ color: "white", textDecoration: "none" }}>
+              Manual Game
+            </Link>,
+            <Link to="/" style={{ color: "white", textDecoration: "none" }}>
+              Game History
+            </Link>,
+            <Link to="/" style={{ color: "white", textDecoration: "none" }}>
+              Trade History
+            </Link>,
+            <Link
+              to="/withdrawal_management"
+              style={{ color: "white", textDecoration: "none" }}
+            >
+              Withdrawal Management
+            </Link>,
+            <Link to="/" style={{ color: "white", textDecoration: "none" }}>
+              Recharge History
+            </Link>,
+            <Link
+              to="/reward_management"
+              style={{ color: "white", textDecoration: "none" }}
+            >
+              Reward Management
+            </Link>,
+            <Link to="/" style={{ color: "white", textDecoration: "none" }}>
+              Complaints
+            </Link>,
+          ].map((text, inde) => (
             <ListItem key={text} disablePadding>
               <ListItemButton>
                 <ListItemIcon sx={{ color: "white" }}>
-                  {index === 0 ? (
+                  {inde === 0 ? (
                     <ScheduleIcon />
-                  ) : index === 1 ? (
+                  ) : inde === 1 ? (
                     <SecurityIcon />
                   ) : (
                     <TextSnippetIcon />
@@ -88,10 +123,8 @@ function ResponsiveDrawer(props) {
       {/* Rest of the drawer content (if any) */}
     </div>
   );
-
   const container =
     window !== undefined ? () => window().document.body : undefined;
-
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -100,7 +133,7 @@ function ResponsiveDrawer(props) {
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
-          backgroundColor: "#d14444", // This line sets the AppBar color
+          backgroundColor: "#D14444", // This line sets the AppBar color
         }}
       >
         <Toolbar>
@@ -175,9 +208,7 @@ function ResponsiveDrawer(props) {
     </Box>
   );
 }
-
 ResponsiveDrawer.propTypes = {
   window: PropTypes.func,
 };
-
 export default ResponsiveDrawer;

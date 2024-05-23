@@ -6,31 +6,31 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import { useTheme } from '@mui/material/styles';
-
 const drawerWidth = 240;
-
 function ManageWinner(props) {
     const theme = useTheme();
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
-
-  
-  
   const handleChange = (event) => {
     setValue(event.target.value);
   };
-
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <Box 
+      <Box sx={{
+      display: 'flex',
+    justifyContent: "flex-end",
+    width: { sm: `calc(100% - 240px)` },
+    position: "absolute", // Added position to make sure it's positioned relative to the parent
+    right: 0 // Positioned at the right>
+    }}>
+      <Box
         component="main"
         sx={{
           backgroundColor:'#D9D9D9',
-           flexGrow: 1, p:1, width:800 }}
+           flexGrow: 1, p:1, width:800,  width: { xs: `calc(100% - 24px)` } }}
       >
-       
         <Typography variant="h5" sx={{p:3}}>Game Winning Setting</Typography>
         <Box
       sx={{
@@ -55,7 +55,6 @@ function ManageWinner(props) {
     marginRight:1,
     fontSize:10
 }
-
         }}>Low Profit Mode</Button>
         </Box>
         <Typography paragraph sx={{m:2}}>[<b>Note:-</b> On <Box component="span" sx={{ color:'#D14444'}}>Low Profit Mode</Box> manual result option may be <Box component="span" sx={{ color:'#D14444' }}>interrupted</Box>,so do accordingly]</Typography>
@@ -63,11 +62,10 @@ function ManageWinner(props) {
     </Box>
     </Box>
     </Box>
+    </Box>
   );
 }
-
 ManageWinner.propTypes = {
   window: PropTypes.func,
 };
-
 export default ManageWinner;

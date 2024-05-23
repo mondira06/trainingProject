@@ -10,7 +10,6 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-
 const drawerWidth = 240;
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -22,7 +21,6 @@ const MenuProps = {
     },
   },
 };
-
 const names = [
   '7318930111',
   '1238930789',
@@ -35,7 +33,6 @@ const names = [
   '4561237896',
   '7894561238',
 ];
-
 function getStyles(name, personName, theme) {
   return {
     fontWeight:
@@ -44,7 +41,6 @@ function getStyles(name, personName, theme) {
         : theme.typography.fontWeightMedium,
   };
 }
-
 function AmountSetup(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -53,34 +49,37 @@ function AmountSetup(props) {
   const [rewardAmount, setRewardAmount] = React.useState("");
   const theme = useTheme();
   const [personName, setPersonName] = React.useState([]);
-
   const handleMinRechargeAmount1Change = (event) => {
     setMinRechargeAmount1(event.target.value);
   };
-
   const handleMinRechargeAmount2Change = (event) => {
     setMinRechargeAmount2(event.target.value);
   };
-
   const handleRewardAmountChange = (event) => {
     setRewardAmount(event.target.value);
   };
-
   const handleSelectChange = (event) => {
     const { target: { value } } = event;
     setPersonName(typeof value === 'string' ? value.split(',') : value);
   };
-
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
+      <Box sx={{
+      display: 'flex',
+    justifyContent: "flex-end",
+    width: { sm: `calc(100% - 240px)` },// Adjusted width calculation
+    position: "absolute", // Added position to make sure it's positioned relative to the parent
+    right: 0 // Positioned at the right>
+    }}>
       <Box
         component="main"
         sx={{
           backgroundColor: '#D9D9D9',
           flexGrow: 1,
           p: 1,
-          width: 800
+          width: 800,
+          width: { xs: `calc(100% - 24px)` },
         }}
       >
         <Typography variant="h5" sx={{ p: 3 }}>Reward System</Typography>
@@ -94,7 +93,7 @@ function AmountSetup(props) {
           <Box display="flex" justifyContent="space-between" sx={{ m: 1 }}>
             <Box>
               <Typography paragraph sx={{ m: 2 }}>Reward Amount</Typography>
-              <FormControl sx={{ m: 1, width: 300, mt: 3 }}>
+              <FormControl sx={{ m: 1, width: 300, mt: 3,width: { xs: 150 } }}>
             <Select
               multiple
               displayEmpty
@@ -140,11 +139,10 @@ function AmountSetup(props) {
         </Box>
       </Box>
     </Box>
+    </Box>
   );
 }
-
 AmountSetup.propTypes = {
   window: PropTypes.func,
 };
-
 export default AmountSetup;

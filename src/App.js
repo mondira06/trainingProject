@@ -1,28 +1,41 @@
+import Dashboard from "./Components/Pages/Dashboard";
 import AmountSetup from "./Components/Pages/AmountSetup";
 import ManageRole from "./Components/Pages/ManageRole";
 import ManageTask from "./Components/Pages/ManageTask";
 import ManageUser from "./Components/Pages/ManageUser";
 import ManageWinner from "./Components/Pages/ManageWinnerSettings";
-import Withdrawal from "./Components/Pages/ManageWithdrawalRequest";
-// import Navbar from "./Components/Navbar"
+import ManageWithdrawalRequest from "./Components/Pages/ManageWithdrawalRequest";
+import Rewardsystem from "./Components/Pages/Rewardsystem";
+import Navbar from "./Components/MenuItems/Navbar";
+
+import { Routes, Route } from "react-router-dom";
+
 function App() {
   return (
     <div className="App">
-<<<<<<< HEAD
-      {/* <UserPage /> */}
-      {/* <Navbar /> */}
-      <Dashboard />
+      <Navbar />
+      {/* <Dashboard/> */}
       {/* <Rewardsystem /> */}
       {/* <Appupi/> */}
-      
-=======
       {/* <SideBar/> */}
-      {/* <UserPage/> */}
       {/* <Navbar/> */}
-       {/* <AmountSetup/> */}
+      {/* <AmountSetup/> */}
       {/* <ManageWinner/> */}
-      <Withdrawal/>
->>>>>>> 112e1860b90152dfc7d41b0ffdab40dbf63e32d0
+      {/* <Withdrawal/> */}
+
+      <Routes>
+        <Route path={"/"} element={<Dashboard />} />
+        <Route path={"/manage_admin"} element={<ManageUser />} />
+        <Route path={"/website_setting"} element={<AmountSetup />} />
+        <Route path={"/reward_management"} element={<Rewardsystem />} />
+        <Route path={"/winner"} element={<ManageWinner />} />
+        <Route path={"/manage_role"} element={<ManageRole />} />
+        <Route
+          path={"/withdrawal_management"}
+          element={<ManageWithdrawalRequest />}
+        />
+        <Route path={"/manage_task"} element={<ManageTask />} />
+      </Routes>
     </div>
   );
 }

@@ -44,10 +44,6 @@ function Withdrawal(props) {
   const StyledButton = styled(Button)(({ theme }) => ({
       backgroundColor: theme.palette.action.hover,
   }));
- 
-  
-  
-  
   const handleChange = (event) => {
     setValue(event.target.value);
   };
@@ -55,13 +51,19 @@ function Withdrawal(props) {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
+      <Box sx={{
+      display: 'flex',
+    justifyContent: "flex-end",
+    width: { sm: `calc(100% - 240px)` }, // Adjusted width calculation
+    position: "absolute", // Added position to make sure it's positioned relative to the parent
+    right: 0 // Positioned at the right>
+    }}></Box>
       <Box 
         component="main"
         sx={{
           backgroundColor:'#D9D9D9',
            flexGrow: 1, p:1, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
       >
-       
         <Typography variant="h5" sx={{p:3}}>Manage Withdrawal Request</Typography>
         <Box
       sx={{

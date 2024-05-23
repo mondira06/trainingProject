@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Grid, Paper, Typography } from "@mui/material";
+import { Box, Grid, Paper, Typography } from "@mui/material";
 
 const gridStyle = {
-  padding: "25px",
+  padding: "20px",
   textAlign: "left",
   backgroundColor: "#C62828",
   color: "#FFFFFF",
@@ -44,7 +44,20 @@ const gridStyle = {
   ];
 
   return (
-    <Grid container spacing={3}>
+    <Box sx={{
+      display: 'flex',
+    justifyContent: "flex-end",
+    width: { sm: `calc(100% - 240px)` }, 
+    position: "absolute", 
+    right: 0 
+    }}>
+    <Grid
+      container spacing={3}
+      direction="row"
+      justifyContent="flex-end"
+      alignItems="center"  
+    >
+
       {combinedData.map((item, index) => (
         <Grid item xs={12} sm={6} md={4} key={index}>
           <Paper style={gridStyle}>
@@ -54,6 +67,7 @@ const gridStyle = {
         </Grid>
       ))}
     </Grid>
+    </Box>
   );
 };
 
