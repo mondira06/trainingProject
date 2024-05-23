@@ -17,6 +17,7 @@ import Typography from "@mui/material/Typography";
 import ScheduleIcon from "@mui/icons-material/Schedule";
 import SecurityIcon from "@mui/icons-material/Security";
 import TextSnippetIcon from "@mui/icons-material/TextSnippet";
+import { Link } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -27,6 +28,7 @@ function ResponsiveDrawer(props) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+  
 
   const drawer = (
     <div>
@@ -53,26 +55,26 @@ function ResponsiveDrawer(props) {
       <Box sx={{ backgroundColor: "#000000", height: "100%" }}>
         <List>
           {[
-            "Dashboard",
-            "Manage Admin",
-            "Website Setting",
-            "Content Management",
-            "User Management",
-            "Order History",
-            "Manual Game",
-            "Game History",
-            "Trade History",
-            "Withdrawal Management",
-            "Recharge History",
-            "Reward Management",
-            "Complaints",
-          ].map((text, index) => (
+               <Link to="/" style={{ color: "white", textDecoration: 'none' }}>Dashboard</Link>,
+               <Link to="/manage_admin" style={{ color: "white", textDecoration: 'none' }}>Manage Admin</Link>,
+               <Link to="/amount_setup" style={{ color: "white", textDecoration: 'none' }}>Website Setting</Link>,
+               <Link to="/content_management" style={{ color: "white", textDecoration: 'none' }}>Content Management</Link>,
+               <Link to="/user_management" style={{ color: "white", textDecoration: 'none' }}>User Management</Link>,
+               <Link to="/order_history" style={{ color: "white", textDecoration: 'none' }}>Order History</Link>,
+               <Link to="/manual_game" style={{ color: "white", textDecoration: 'none' }}>Manual Game</Link>, // Fixed typo here
+               <Link to="/game_history" style={{ color: "white", textDecoration: 'none' }}>Game History</Link>,
+               <Link to="/trade_history" style={{ color: "white", textDecoration: 'none' }}>Trade History</Link>,
+               <Link to="/withdrawal" style={{ color: "white", textDecoration: 'none' }}>Withdrawal Management</Link>,
+               <Link to="/recharge" style={{ color: "white", textDecoration: 'none' }}>Recharge History</Link>,
+               <Link to="/reward" style={{ color: "white", textDecoration: 'none' }}>Reward Management</Link>,
+               <Link to="/complaints" style={{ color: "white", textDecoration: 'none' }}>Complaints</Link>,
+          ].map((text, inde) => (
             <ListItem key={text} disablePadding>
               <ListItemButton>
                 <ListItemIcon sx={{ color: "white" }}>
-                  {index === 0 ? (
+                  {inde === 0 ? (
                     <ScheduleIcon />
-                  ) : index === 1 ? (
+                  ) : inde === 1 ? (
                     <SecurityIcon />
                   ) : (
                     <TextSnippetIcon />
@@ -103,6 +105,7 @@ function ResponsiveDrawer(props) {
           backgroundColor: "#d14444", // This line sets the AppBar color
         }}
       >
+       
         <Toolbar>
           <IconButton
             color="inherit"

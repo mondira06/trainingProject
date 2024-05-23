@@ -1,23 +1,44 @@
 import React from "react";
-import { Grid, Paper, Typography } from "@mui/material";
-const data = [
-  { heading: "Website Mode", value: 10 },
-  { heading: "Withdrawal Status", value: 20 },
-  { heading: "Pending Complaints", value: 30 },
-  { heading: "No. of Deposits", value: 40 },
-  { heading: "No. of Withdrawal ", value: 50 },
-  { heading: "Total Earning", value: 60 },
-  { heading: "Today Bet Amount", value: 70 },
-  { heading: "Today total win", value: 80 },
-  { heading: "Today Profit", value: 90 },
-  { heading: "Level1 Commision", value: 100 },
-  { heading: "Level2 Commision", value: 110 },
-  { heading: "Bonus Wallet", value: 0 },
-];
+import { Grid, Paper, Typography,Box } from "@mui/material";
+import { useState,useEffect } from "react";
+import axios from "axios";
+
 const BoxGrid = () => {
+  const [data,setData]= useState([]);
+const dat = [
+  { heading: "Today User Join", value: data},
+  { heading: "Today's Recharge", value: 0 },
+  { heading: "Today's Withdrawal", value: 0 },
+  { heading: "User Balance", value: 0 },
+  { heading: "Total User", value: 0 },
+  { heading: "Pending Recharges", value: 0 },
+  { heading: "Success Recharge", value: 0 },
+  { heading: "Total Withdrawal", value: 0 },
+  { heading: "Withdrawal Requests", value: 0 },
+  { heading: "Website Mode", value: 0 },
+  { heading: "Withdrawal Status", value: 0 },
+  { heading: "Pending Complaints", value: 0 },
+];
+useEffect(() => {
+  axios.get('https://skbm55g7-3000.inc1.devtunnels.ms/todays-registrations')
+  .then((res)=>{
+      console.log(res.data.countOfDailyUsers);
+      setData(res.data.countOfDailyUsers);
+  })
+.catch ((error)=>{
+  console.log(error);
+  alert("Something went wrong");})
+},[])
   return (
+    <Box sx={{
+      display: 'flex',
+    justifyContent: "flex-end",
+    width: { sm: `calc(100% - 240px)` }, // Adjusted width calculation
+    position: "absolute", // Added position to make sure it's positioned relative to the parent
+    right: 0 // Positioned at the right>
+    }}>
     <Grid container spacing={3}>
-      {data.map((item, index) => (
+      {dat.map((item, index) => (
         <Grid item xs={12} sm={6} md={4} key={index}>
           <Paper
             style={{
@@ -28,11 +49,14 @@ const BoxGrid = () => {
             }}
           >
             <Typography variant="h6">{item.heading}</Typography>
-            <Typography variant="h7">{item.value}</Typography>
+           <Typography variant="h6">{item.value}</Typography>
+           
+           
           </Paper>
         </Grid>
       ))}
     </Grid>
+    </Box>
   );
 };
 export default BoxGrid;

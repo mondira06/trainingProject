@@ -13,7 +13,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
-
+import { Link } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -55,6 +55,13 @@ function ManageRole(props) {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
+      <Box sx={{
+      display: 'flex',
+    justifyContent: "flex-end",
+    width: { sm: `calc(100% - 240px)` }, // Adjusted width calculation
+    position: "absolute", // Added position to make sure it's positioned relative to the parent
+    right: 0 // Positioned at the right>
+    }}>
       <Box 
         component="main"
         sx={{
@@ -134,12 +141,15 @@ function ManageRole(props) {
           Showing 1 to 3 of 3 entries
         </Typography>
         <Typography paragraph >
-        <StyledButton variant="text" sx={{border:1,color:'#D9D9D9'}}>Previous</StyledButton>
+        <Link to= "/manage_admin">
+<StyledButton variant="text" sx={{border:1,color:'black'}}>Previous</StyledButton></Link>
 <Button variant="contained">1</Button>
-<StyledButton variant="text" sx={{border:1,color:'#D9D9D9'}}>Next</StyledButton>
+<Link to= "/manage_task">
+<StyledButton variant="text" sx={{border:1,color:'black'}}>Next</StyledButton></Link>
 </Typography>
       </Box>
       <hr/>
+    </Box>
     </Box>
     </Box>
     </Box>

@@ -74,13 +74,21 @@ function AmountSetup(props) {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
+      <Box sx={{
+      display: 'flex',
+    justifyContent: "flex-end",
+    width: { sm: `calc(100% - 240px)` },// Adjusted width calculation
+    position: "absolute", // Added position to make sure it's positioned relative to the parent
+    right: 0 // Positioned at the right>
+    }}>
       <Box
         component="main"
         sx={{
           backgroundColor: '#D9D9D9',
           flexGrow: 1,
           p: 1,
-          width: 800
+          width: 800,
+          width: { xs: `calc(100% - 24px)` }, 
         }}
       >
         <Typography variant="h5" sx={{ p: 3 }}>Reward System</Typography>
@@ -94,7 +102,7 @@ function AmountSetup(props) {
           <Box display="flex" justifyContent="space-between" sx={{ m: 1 }}>
             <Box>
               <Typography paragraph sx={{ m: 2 }}>Reward Amount</Typography>
-              <FormControl sx={{ m: 1, width: 300, mt: 3 }}>
+              <FormControl sx={{ m: 1, width: 300, mt: 3,width: { xs: 150 } }}>
             <Select
               multiple
               displayEmpty
@@ -139,6 +147,7 @@ function AmountSetup(props) {
           </Box>
         </Box>
       </Box>
+    </Box>
     </Box>
   );
 }

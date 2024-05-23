@@ -13,7 +13,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
-
+import { Link } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -134,9 +134,10 @@ function ManageTask(props) {
           Showing 1 to 3 of 3 entries
         </Typography>
         <Typography paragraph >
-        <StyledButton variant="text" sx={{border:1,color:'black'}}>Previous</StyledButton>
+        <Link to= "/manage_role">
+<StyledButton variant="text" sx={{border:1,color:'black'}}>Previous</StyledButton></Link>
 <Button variant="contained">1</Button>
-<StyledButton variant="text" sx={{border:1,color:'black'}}>Next</StyledButton>
+<StyledButton variant="text" sx={{border:1,color:'#D9D9D9'}}>Next</StyledButton>
 </Typography>
       </Box>
       <hr/>
