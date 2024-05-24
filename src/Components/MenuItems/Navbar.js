@@ -17,7 +17,9 @@ import Typography from "@mui/material/Typography";
 import ScheduleIcon from "@mui/icons-material/Schedule";
 import SecurityIcon from "@mui/icons-material/Security";
 import TextSnippetIcon from "@mui/icons-material/TextSnippet";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import { Hidden } from "@mui/material";
+
 const drawerWidth = 240;
 function ResponsiveDrawer(props) {
   const { window } = props;
@@ -49,8 +51,8 @@ function ResponsiveDrawer(props) {
       </Box>
       <Box sx={{ backgroundColor: "#000000", height: "100%" }}>
         <List>
-        {[
-            <Link to="/" style={{ color: "white", textDecoration: "none" }}>
+          {[
+            <Link to="/dashboard" style={{ color: "white", textDecoration: "none" }}>
               Dashboard
             </Link>,
             <Link
@@ -65,22 +67,40 @@ function ResponsiveDrawer(props) {
             >
               Website Setting
             </Link>,
-            <Link to="/" style={{ color: "white", textDecoration: "none" }}>
+            <Link
+              to="/content_managemenmt"
+              style={{ color: "white", textDecoration: "none" }}
+            >
               Content Management
             </Link>,
-            <Link to="/" style={{ color: "white", textDecoration: "none" }}>
+            <Link
+              to="/user_management"
+              style={{ color: "white", textDecoration: "none" }}
+            >
               User Management
             </Link>,
-            <Link to="/" style={{ color: "white", textDecoration: "none" }}>
+            <Link
+              to="/order_history"
+              style={{ color: "white", textDecoration: "none" }}
+            >
               Order History
             </Link>,
-            <Link to="/" style={{ color: "white", textDecoration: "none" }}>
+            <Link
+              to="/manual_game"
+              style={{ color: "white", textDecoration: "none" }}
+            >
               Manual Game
             </Link>,
-            <Link to="/" style={{ color: "white", textDecoration: "none" }}>
+            <Link
+              to="/game_history"
+              style={{ color: "white", textDecoration: "none" }}
+            >
               Game History
             </Link>,
-            <Link to="/" style={{ color: "white", textDecoration: "none" }}>
+            <Link
+              to="/trade_history"
+              style={{ color: "white", textDecoration: "none" }}
+            >
               Trade History
             </Link>,
             <Link
@@ -89,7 +109,10 @@ function ResponsiveDrawer(props) {
             >
               Withdrawal Management
             </Link>,
-            <Link to="/" style={{ color: "white", textDecoration: "none" }}>
+            <Link
+              to="/recharge_history"
+              style={{ color: "white", textDecoration: "none" }}
+            >
               Recharge History
             </Link>,
             <Link
@@ -98,7 +121,10 @@ function ResponsiveDrawer(props) {
             >
               Reward Management
             </Link>,
-            <Link to="/" style={{ color: "white", textDecoration: "none" }}>
+            <Link
+              to="/complaints"
+              style={{ color: "white", textDecoration: "none" }}
+            >
               Complaints
             </Link>,
           ].map((text, inde) => (
@@ -120,7 +146,6 @@ function ResponsiveDrawer(props) {
         </List>
       </Box>
       <Divider />
-      {/* Rest of the drawer content (if any) */}
     </div>
   );
   const container =

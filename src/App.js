@@ -7,24 +7,22 @@ import ManageWinner from "./Components/Pages/ManageWinnerSettings";
 import ManageWithdrawalRequest from "./Components/Pages/ManageWithdrawalRequest";
 import Rewardsystem from "./Components/Pages/Rewardsystem";
 import Navbar from "./Components/MenuItems/Navbar";
-
-import { Routes, Route } from "react-router-dom";
+import LoginPage from "./Components/Pages/LoginPage";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 function App() {
+  const location = useLocation();
+
+  // Conditionally render the Navbar based on the current route
+  const renderNavbar = location.pathname !== "/login";
+
   return (
     <div className="App">
-      <Navbar />
-      {/* <Dashboard/> */}
-      {/* <Rewardsystem /> */}
-      {/* <Appupi/> */}
-      {/* <SideBar/> */}
-      {/* <Navbar/> */}
-      {/* <AmountSetup/> */}
-      {/* <ManageWinner/> */}
-      {/* <Withdrawal/> */}
+      {renderNavbar && <Navbar />}
 
       <Routes>
-        <Route path={"/"} element={<Dashboard />} />
+        <Route path={"/login"} element={<LoginPage />} />
+        <Route path={"/dashboard"} element={<Dashboard />} />
         <Route path={"/manage_admin"} element={<ManageUser />} />
         <Route path={"/website_setting"} element={<AmountSetup />} />
         <Route path={"/reward_management"} element={<Rewardsystem />} />
