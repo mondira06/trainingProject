@@ -10,6 +10,7 @@ import {
 import PersonIcon from "@mui/icons-material/Person";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 const Login = () => {
   const [phonenumber, setPhonenumber] = useState("");
@@ -23,6 +24,7 @@ const Login = () => {
     try {
       const response = await axios.post('https://api.freeapi.app/api/v1/users/login', {  username, password });
       if (response.status === 200) {
+        Cookies.set('isLoggedIn', 'true', { expires: 0.0104 }); // Expires in 15 minutes
         navigate('/dashboard');
       }
     } catch (error) {

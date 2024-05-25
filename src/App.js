@@ -8,18 +8,34 @@ import ManageWithdrawalRequest from "./Components/Pages/ManageWithdrawalRequest"
 import Rewardsystem from "./Components/Pages/Rewardsystem";
 import Navbar from "./Components/MenuItems/Navbar";
 import LoginPage from "./Components/Pages/LoginPage";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import UserManagement from "./Components/Pages/UserManagement";
+import Cookies from "js-cookie";
+import React, { useEffect, useState } from "react";
 
 function App() {
-  const location = useLocation();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
   // Conditionally render the Navbar based on the current route
-  const renderNavbar = location.pathname !== "/login";
+  const checkLoginStatus = () => {
+    const isLoggedInCookie = Cookies.get("isLoggedIn");
+    return isLoggedInCookie === "true"; // Assuming the cookie value is a string 'true'
+
+  // const renderNavbar = location.pathname !== "/login";
+};
+useEffect(() => {
+  if (!checkLoginStatus()) {
+    // Navigate to the login page if the user is not logged in
+    navigate("/login");
+  } else {
+    setIsLoggedIn(true);
+  }
+}, [navigate]);
 
   return (
     <div className="App">
-      {renderNavbar && <Navbar />}
+      {isLoggedIn && <Navbar />}
 
       <Routes>
         <Route path={"/login"} element={<LoginPage />} />
