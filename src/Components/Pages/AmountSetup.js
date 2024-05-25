@@ -6,7 +6,6 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import { Link } from 'react-router-dom';
-import Navbar from '../MenuItems/Navbar';
 
 const drawerWidth = 240;
 function AmountSetup(props) {
@@ -17,7 +16,6 @@ function AmountSetup(props) {
     setValue(event.target.value);
   };
   return (
-    <Navbar>
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <Box sx={{
@@ -112,7 +110,6 @@ function AmountSetup(props) {
     </Box>
     </Box>
     </Box>
-    </Navbar>
   );
 }
 AmountSetup.propTypes = {

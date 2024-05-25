@@ -9,6 +9,7 @@ import Rewardsystem from "./Components/Pages/Rewardsystem";
 import Navbar from "./Components/MenuItems/Navbar";
 import LoginPage from "./Components/Pages/LoginPage";
 import { Routes, Route, useLocation } from "react-router-dom";
+import UserManagement from "./Components/Pages/UserManagement";
 
 function App() {
   const location = useLocation();
@@ -28,6 +29,7 @@ function App() {
         <Route path={"/reward_management"} element={<Rewardsystem />} />
         <Route path={"/winner"} element={<ManageWinner />} />
         <Route path={"/manage_role"} element={<ManageRole />} />
+        <Route path={"/user_management"} element={<UserManagement />} />
         <Route
           path={"/withdrawal_management"}
           element={<ManageWithdrawalRequest />}

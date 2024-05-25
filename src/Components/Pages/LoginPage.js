@@ -21,7 +21,7 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('/api/login', { phonenumber, username, password });
+      const response = await axios.post('https://api.freeapi.app/api/v1/users/login', {  username, password });
       if (response.status === 200) {
         navigate('/dashboard');
       }
@@ -62,7 +62,7 @@ const Login = () => {
           </Typography>
           {error && <Typography color="error">{error}</Typography>}
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-            <TextField
+            {/* <TextField
               margin="normal"
               required
               fullWidth
@@ -73,7 +73,7 @@ const Login = () => {
               autoFocus
               value={phonenumber}
               onChange={(e) => setPhonenumber(e.target.value)}
-            />
+            /> */}
             <TextField
               margin="normal"
               required
@@ -115,4 +115,3 @@ const Login = () => {
 };
 
 export default Login;
-
