@@ -10,19 +10,25 @@ import {
 import PersonIcon from "@mui/icons-material/Person";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+import Cookies from 'js-cookie';
+import { useAuth } from '../../context/AuthContext';
 
 const Login = () => {
-  const [phonenumber, setPhonenumber] = useState("");
-  const [username, setUsername] = useState("");
+  const [mobile, setPhonenumber] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const { login } = useAuth();
+  const [token, setToken] = useState(null);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('/api/login', { phonenumber, username, password });
+      const response = await axios.post('http://localhost:3000/login', { mobile, password });
       if (response.status === 200) {
+        // Save the token in a cookie
+        login(response.data.token);
+     
         navigate('/dashboard');
       }
     } catch (error) {
@@ -71,20 +77,8 @@ const Login = () => {
               name="phonenumber"
               autoComplete="phonenumber"
               autoFocus
-              value={phonenumber}
+              value={mobile}
               onChange={(e) => setPhonenumber(e.target.value)}
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="username"
-              label="Username"
-              name="username"
-              autoComplete="username"
-              autoFocus
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
             />
             <TextField
               margin="normal"

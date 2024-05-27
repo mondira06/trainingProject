@@ -9,6 +9,8 @@ import Rewardsystem from "./Components/Pages/Rewardsystem";
 import Navbar from "./Components/MenuItems/Navbar";
 import LoginPage from "./Components/Pages/LoginPage";
 import { Routes, Route, useLocation } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext"
+import ProtectedRoute from "./Components/ProtectedRoute";
 
 function App() {
   const location = useLocation();
@@ -19,10 +21,10 @@ function App() {
   return (
     <div className="App">
       {renderNavbar && <Navbar />}
-
+      <AuthProvider>
       <Routes>
         <Route path={"/login"} element={<LoginPage />} />
-        <Route path={"/dashboard"} element={<Dashboard />} />
+     
         <Route path={"/manage_admin"} element={<ManageUser />} />
         <Route path={"/website_setting"} element={<AmountSetup />} />
         <Route path={"/reward_management"} element={<Rewardsystem />} />
@@ -32,8 +34,17 @@ function App() {
           path={"/withdrawal_management"}
           element={<ManageWithdrawalRequest />}
         />
+         <Route
+      path="/dashboard"
+      element={
+        <ProtectedRoute>
+          <Dashboard />
+        </ProtectedRoute>
+      }
+    />
         <Route path={"/manage_task"} element={<ManageTask />} />
       </Routes>
+      </AuthProvider>
     </div>
   );
 }
