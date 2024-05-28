@@ -11,6 +11,7 @@ import LoginPage from "./Components/Pages/LoginPage";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext"
 import ProtectedRoute from "./Components/ProtectedRoute";
+import LogOut from "./Components/Pages/LogOut";
 
 function App() {
   const location = useLocation();
@@ -24,12 +25,12 @@ function App() {
       <AuthProvider>
       <Routes>
         <Route path={"/login"} element={<LoginPage />} />
-     
         <Route path={"/manage_admin"} element={<ManageUser />} />
         <Route path={"/website_setting"} element={<AmountSetup />} />
         <Route path={"/reward_management"} element={<Rewardsystem />} />
         <Route path={"/winner"} element={<ManageWinner />} />
         <Route path={"/manage_role"} element={<ManageRole />} />
+        <Route path={"/logout"} element={<LogOut />} />
         <Route
           path={"/withdrawal_management"}
           element={<ManageWithdrawalRequest />}

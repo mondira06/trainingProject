@@ -42,6 +42,8 @@ function getStyles(name, personName, theme) {
   };
 }
 function AmountSetup(props) {
+  // const [todayUserJoin, setTodayUserJoin] = useState(0);
+
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [minRechargeAmount1, setMinRechargeAmount1] = React.useState("");
@@ -62,6 +64,19 @@ function AmountSetup(props) {
     const { target: { value } } = event;
     setPersonName(typeof value === 'string' ? value.split(',') : value);
   };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const { data } = await axios.get(
+  //         "https://skbm55g7-3000.inc1.devtunnels.ms/todays-registrations"
+  //       );
+  //       setTodayUserJoin(data.countOfDailyUsers);
+  //     } catch (err) {
+  //       console.error("Error occurred fetching daily users:", err);
+  //     }
+  //   };
+  //   fetchData();
+  // }, []);
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />

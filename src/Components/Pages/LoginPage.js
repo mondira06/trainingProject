@@ -19,7 +19,7 @@ const Login = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const { login } = useAuth();
-  const [token, setToken] = useState(null);
+  // const [token, setToken] = useState(null);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -35,6 +35,7 @@ const Login = () => {
       setError("Login failed. Please check your credentials and try again.");
     }
   };
+ 
 
   return (
     
