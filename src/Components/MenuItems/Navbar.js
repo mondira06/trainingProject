@@ -18,15 +18,22 @@ import ScheduleIcon from "@mui/icons-material/Schedule";
 import SecurityIcon from "@mui/icons-material/Security";
 import TextSnippetIcon from "@mui/icons-material/TextSnippet";
 import { Link } from "react-router-dom";
+
+import Button from "@mui/material/Button";
+
 import { Hidden } from "@mui/material";
 
 const drawerWidth = 240;
 function ResponsiveDrawer(props) {
   const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [mobileOpen, setMobileOpen, handleLogout] = React.useState(false);
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+  // const handleLogout = async () => {
+  //   await logout();
+  //   navigate("/login");
+  // };
   const drawer = (
     <div>
       <Box
@@ -52,7 +59,10 @@ function ResponsiveDrawer(props) {
       <Box sx={{ backgroundColor: "#000000", height: "100%" }}>
         <List>
           {[
-            <Link to="/dashboard" style={{ color: "white", textDecoration: "none" }}>
+            <Link
+              to="/dashboard"
+              style={{ color: "white", textDecoration: "none" }}
+            >
               Dashboard
             </Link>,
             <Link
@@ -127,6 +137,12 @@ function ResponsiveDrawer(props) {
             >
               Complaints
             </Link>,
+            <Link
+            to="/logout"
+            style={{ color: "white", textDecoration: "none" }}
+          >
+            <b>LOG OUT</b>
+          </Link>,
           ].map((text, inde) => (
             <ListItem key={text} disablePadding>
               <ListItemButton>
@@ -158,7 +174,7 @@ function ResponsiveDrawer(props) {
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
-          backgroundColor: "#D14444", // This line sets the AppBar color
+          backgroundColor: "#D14444", 
         }}
       >
         <Toolbar>
@@ -181,6 +197,11 @@ function ResponsiveDrawer(props) {
               color: "white",
             }}
           ></Typography>
+          {/* <Box>
+          <Link to="/login">
+            <Button variant="contained" sx={{backgroundColor:'#b71c1c',color:'white' }} onClick={handleLogout}>Log Out</Button>
+            </Link>
+            </Box> */}
         </Toolbar>
       </AppBar>
       <Box

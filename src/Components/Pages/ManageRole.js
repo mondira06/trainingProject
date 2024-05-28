@@ -88,7 +88,6 @@ function ManageRole(props) {
         <TextField
         value={value}
         onChange={handleChange}
-        // Add styles here if needed
       />
     </Box>
     <hr/>
