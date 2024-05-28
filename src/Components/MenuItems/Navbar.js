@@ -102,10 +102,10 @@ function ResponsiveDrawer(props) {
               Manual Game
             </Link>,
             <Link
-              to="/game_history"
+              to="/create_coupon"
               style={{ color: "white", textDecoration: "none" }}
             >
-              Game History
+              Create Coupon
             </Link>,
             <Link
               to="/trade_history"
@@ -137,6 +137,12 @@ function ResponsiveDrawer(props) {
             >
               Complaints
             </Link>,
+          <Link
+          to="/commission_level"
+          style={{ color: "white", textDecoration: "none" }}
+        >
+          Commission Level
+        </Link>,
             <Link
             to="/logout"
             style={{ color: "white", textDecoration: "none" }}

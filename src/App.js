@@ -12,7 +12,8 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext"
 import ProtectedRoute from "./Components/ProtectedRoute";
 import LogOut from "./Components/Pages/LogOut";
-
+import CommissionLevel from "./Components/Pages/CommissionLevel"
+import CreateCoupon from "./Components/Pages/CreateCoupon"
 function App() {
   const location = useLocation();
 
@@ -25,25 +26,46 @@ function App() {
       <AuthProvider>
       <Routes>
         <Route path={"/login"} element={<LoginPage />} />
-        <Route path={"/manage_admin"} element={<ManageUser />} />
-        <Route path={"/website_setting"} element={<AmountSetup />} />
-        <Route path={"/reward_management"} element={<Rewardsystem />} />
-        <Route path={"/winner"} element={<ManageWinner />} />
-        <Route path={"/manage_role"} element={<ManageRole />} />
-        <Route path={"/logout"} element={<LogOut />} />
+        <Route path={"/manage_admin"} element={<ProtectedRoute>
+          <ManageUser />
+          </ProtectedRoute>} />
+        <Route path={"/website_setting"} element={<ProtectedRoute>
+          <AmountSetup />
+          </ProtectedRoute>} />
+        <Route path={"/reward_management"} element={<ProtectedRoute>
+          <Rewardsystem/>
+          </ProtectedRoute>} />
+        <Route path={"/winner"} element={<ProtectedRoute>
+          <ManageWinner />
+          </ProtectedRoute>} />
+        <Route path={"/manage_role"} element={<ProtectedRoute>
+          <ManageRole />
+          </ProtectedRoute>} />
+        <Route path={"/logout"} element={<ProtectedRoute>
+          <LogOut/>
+          </ProtectedRoute>} />
+        <Route path={"/create_coupon"} element={<ProtectedRoute>
+          <CreateCoupon />
+          </ProtectedRoute>} />
+        <Route path={"/commission_level"} element={<ProtectedRoute><CommissionLevel/></ProtectedRoute>} />
         <Route
           path={"/withdrawal_management"}
-          element={<ManageWithdrawalRequest />}
+          element={<ProtectedRoute>
+            <ManageWithdrawalRequest />
+            </ProtectedRoute>}
         />
          <Route
       path="/dashboard"
       element={
         <ProtectedRoute>
           <Dashboard />
-        </ProtectedRoute>
+          </ProtectedRoute>
+
       }
     />
-        <Route path={"/manage_task"} element={<ManageTask />} />
+        <Route path={"/manage_task"} element={<ProtectedRoute>
+          <ManageTask/>
+          </ProtectedRoute>} />
       </Routes>
       </AuthProvider>
     </div>

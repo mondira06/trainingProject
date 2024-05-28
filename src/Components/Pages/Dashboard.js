@@ -143,7 +143,7 @@ const BoxGrid = () => {
   useEffect(() => {
     // Fetch today's user registrations count
     axios
-      .get("http://localhost:3000/todays-registrations")
+      .get("http://localhost:3000/todays-registrations", { withCredentials: true })
       .then((res) => {
         setData(res.data.countOfDailyUsers);
       })
