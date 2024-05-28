@@ -11,6 +11,7 @@ import LoginPage from "./Components/Pages/LoginPage";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext"
 import ProtectedRoute from "./Components/ProtectedRoute";
+import Logout from "./Components/Pages/Logout";
 
 function App() {
   const location = useLocation();
@@ -33,6 +34,10 @@ function App() {
         <Route
           path={"/withdrawal_management"}
           element={<ManageWithdrawalRequest />}
+        />
+        <Route
+          path={"/logout"}
+          element={<Logout />}
         />
          <Route
       path="/dashboard"

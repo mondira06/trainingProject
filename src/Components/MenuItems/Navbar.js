@@ -18,7 +18,8 @@ import ScheduleIcon from "@mui/icons-material/Schedule";
 import SecurityIcon from "@mui/icons-material/Security";
 import TextSnippetIcon from "@mui/icons-material/TextSnippet";
 import { Link } from "react-router-dom";
-import { Hidden } from "@mui/material";
+import { Button, Hidden } from "@mui/material";
+import Logout from "../Pages/Logout";
 
 const drawerWidth = 240;
 function ResponsiveDrawer(props) {
@@ -115,17 +116,19 @@ function ResponsiveDrawer(props) {
             >
               Recharge History
             </Link>,
-            <Link
-              to="/reward_management"
-              style={{ color: "white", textDecoration: "none" }}
-            >
-              Reward Management
-            </Link>,
+            
+           
             <Link
               to="/complaints"
               style={{ color: "white", textDecoration: "none" }}
             >
               Complaints
+            </Link>,
+             <Link
+              to="/logout"
+              style={{ color: "white", textDecoration: "none" }}
+            >
+             Logout
             </Link>,
           ].map((text, inde) => (
             <ListItem key={text} disablePadding>
@@ -171,6 +174,7 @@ function ResponsiveDrawer(props) {
           >
             <MenuIcon />
           </IconButton>
+          
           <Typography
             variant="h6"
             noWrap
@@ -181,6 +185,7 @@ function ResponsiveDrawer(props) {
               color: "white",
             }}
           ></Typography>
+          
         </Toolbar>
       </AppBar>
       <Box

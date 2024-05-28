@@ -24,7 +24,7 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3000/login', { mobile, password });
+      const response = await axios.post('https://skbm55g7-3000.inc1.devtunnels.ms/login', { mobile, password });
       if (response.status === 200) {
         // Save the token in a cookie
         login(response.data.token);

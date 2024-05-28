@@ -19,11 +19,11 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     Cookies.remove('token');
-    setIsAuthenticated(false);
+    setIsAuthenticated(true);
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+    <AuthContext.Provider value={{ isAuthenticated, login,logout}}>
       {children}
     </AuthContext.Provider>
   );
