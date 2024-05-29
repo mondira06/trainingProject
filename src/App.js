@@ -9,9 +9,13 @@ import Rewardsystem from "./Components/Pages/Rewardsystem";
 import Navbar from "./Components/MenuItems/Navbar";
 import LoginPage from "./Components/Pages/LoginPage";
 import { Routes, Route, useLocation } from "react-router-dom";
-import { AuthProvider } from "./context/AuthContext"
+import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./Components/ProtectedRoute";
 import LogOut from "./Components/Pages/LogOut";
+import CommissionLevel from "./Components/Pages/CommissionLevel";
+import CreateCoupon from "./Components/Pages/CreateCoupon";
+import TrxAddress from "./Components/Pages/TrxAddress";
+import WingoResult from "./Components/Pages/WingoResult";
 import Commission_rates from "./Components/Pages/Commission_rates";
 import UPIAddress from "./Components/Pages/UpiAddress";
 import GameHistory from "./Components/Pages/Gamehistory";
@@ -19,13 +23,118 @@ import K3History from "./Components/Pages/K3History";
 
 function App() {
   const location = useLocation();
-
-  // Conditionally render the Navbar based on the current route
   const renderNavbar = location.pathname !== "/login";
   return (
     <div className="App">
       {renderNavbar && <Navbar />}
       <AuthProvider>
+        <Routes>
+          <Route path={"/login"} element={<LoginPage />} />
+          <Route
+            path={"/manage_admin"}
+            element={
+              <ProtectedRoute>
+                <ManageUser />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={"/website_setting"}
+            element={
+              <ProtectedRoute>
+                <AmountSetup />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={"/reward_management"}
+            element={
+              <ProtectedRoute>
+                <Rewardsystem />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={"/winner"}
+            element={
+              <ProtectedRoute>
+                <ManageWinner />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={"/manage_role"}
+            element={
+              <ProtectedRoute>
+                <ManageRole />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={"/logout"}
+            element={
+              <ProtectedRoute>
+                <LogOut />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={"/create_coupon"}
+            element={
+              <ProtectedRoute>
+                <CreateCoupon />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={"/commission_level"}
+            element={
+              <ProtectedRoute>
+                <CommissionLevel />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={"/trx_address"}
+            element={
+              <ProtectedRoute>
+                <TrxAddress />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={"/withdrawal_management"}
+            element={
+              <ProtectedRoute>
+                <ManageWithdrawalRequest />
+              </ProtectedRoute>
+            }
+          />
+        <Route
+            path={"/wingo_result"}
+            element={
+              <ProtectedRoute>
+                <WingoResult/>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={"/manage_task"}
+            element={
+              <ProtectedRoute>
+                <ManageTask />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
       <Routes>
         <Route path={"/login"} element={<LoginPage />} />
         <Route path={"/manage_admin"} element={<ProtectedRoute><ManageUser /></ProtectedRoute>} />

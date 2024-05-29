@@ -10,7 +10,7 @@ import {
 import PersonIcon from "@mui/icons-material/Person";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
-import Cookies from 'js-cookie';
+// import Cookies from 'js-cookie';
 import { useAuth } from '../../context/AuthContext';
 
 const Login = () => {

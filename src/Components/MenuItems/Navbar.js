@@ -108,10 +108,16 @@ function ResponsiveDrawer(props) {
               Manual Game
             </Link>,
             <Link
-              to="/game_history"
+            to="/game_history"
+            style={{ color: "white", textDecoration: "none" }}
+          >
+            Game History
+          </Link>,
+            <Link
+              to="/create_coupon"
               style={{ color: "white", textDecoration: "none" }}
             >
-              Game History
+              Create Coupon
             </Link>,
             <Link
             to="/commission"
@@ -155,6 +161,24 @@ function ResponsiveDrawer(props) {
             >
               Complaints
             </Link>,
+          <Link
+          to="/commission_level"
+          style={{ color: "white", textDecoration: "none" }}
+        >
+          Commission Level
+        </Link>,
+        <Link
+        to="/trx_address"
+        style={{ color: "white", textDecoration: "none" }}
+      >
+        TRX Address
+      </Link>,
+       <Link
+       to="/wingo_result"
+       style={{ color: "white", textDecoration: "none" }}
+     >
+       Wingo Result
+     </Link>,
             <Link
             to="/logout"
             style={{ color: "white", textDecoration: "none" }}
@@ -233,7 +257,7 @@ function ResponsiveDrawer(props) {
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
+            keepMounted: true, 
           }}
           sx={{
             display: { xs: "block", sm: "none" },
