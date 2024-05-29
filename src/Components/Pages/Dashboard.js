@@ -278,9 +278,9 @@ const BoxGrid = () => {
       sx={{
         display: "flex",
         justifyContent: "flex-end",
-        width: { sm: `calc(100% - 240px)` }, // Adjusted width calculation
-        position: "absolute", // Added position to make sure it's positioned relative to the parent
-        right: 0, // Positioned at the right
+        width: { sm: `calc(100% - 240px)` }, 
+        position: "absolute", 
+        right: 0, 
       }}
     >
       <Grid container spacing={3}>
@@ -299,9 +299,6 @@ const BoxGrid = () => {
             </Paper>
           </Grid>
         ))}
-        {/* <Button variant="contained" color="primary" onClick={handleLogout}>
-        Logout
-      </Button> */}
       </Grid>
     </Box>
   );
