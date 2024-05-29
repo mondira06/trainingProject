@@ -16,10 +16,14 @@ import CommissionLevel from "./Components/Pages/CommissionLevel";
 import CreateCoupon from "./Components/Pages/CreateCoupon";
 import TrxAddress from "./Components/Pages/TrxAddress";
 import WingoResult from "./Components/Pages/WingoResult";
+import Commission_rates from "./Components/Pages/Commission_rates";
+import UPIAddress from "./Components/Pages/UpiAddress";
+import GameHistory from "./Components/Pages/Gamehistory";
+import K3History from "./Components/Pages/K3History";
+
 function App() {
   const location = useLocation();
   const renderNavbar = location.pathname !== "/login";
-
   return (
     <div className="App">
       {renderNavbar && <Navbar />}
@@ -131,6 +135,32 @@ function App() {
             }
           />
         </Routes>
+      <Routes>
+        <Route path={"/login"} element={<LoginPage />} />
+        <Route path={"/manage_admin"} element={<ProtectedRoute><ManageUser /></ProtectedRoute>} />
+        <Route path={"/website_setting"} element={<ProtectedRoute><AmountSetup /></ProtectedRoute>} />
+        <Route path={"/reward_management"} element={<ProtectedRoute><Rewardsystem /></ProtectedRoute>} />
+        <Route path={"/winner"} element={<ProtectedRoute><ManageWinner /></ProtectedRoute>} />
+        <Route path={"/manage_role"} element={<ProtectedRoute><ManageRole /></ProtectedRoute>} />
+        <Route path={"/logout"} element={<ProtectedRoute><LogOut /></ProtectedRoute>} />
+        <Route path={"/commission"} element={<ProtectedRoute><Commission_rates /></ProtectedRoute>} />
+        <Route path={"/upi"} element={<ProtectedRoute><UPIAddress /></ProtectedRoute>} />
+        <Route path={"/game_history"} element={<ProtectedRoute><GameHistory /></ProtectedRoute>} />
+        <Route path={"/K3"} element={<ProtectedRoute><K3History/></ProtectedRoute>} />
+        <Route
+          path={"/withdrawal_management"}
+          element={<ManageWithdrawalRequest />}
+        />
+         <Route
+      path="/dashboard"
+      element={
+        <ProtectedRoute>
+          <Dashboard />
+        </ProtectedRoute>
+      }
+    />
+        <Route path={"/manage_task"} element={<ProtectedRoute><ManageTask /></ProtectedRoute>} />
+      </Routes>
       </AuthProvider>
     </div>
   );

@@ -78,6 +78,12 @@ function ResponsiveDrawer(props) {
               Website Setting
             </Link>,
             <Link
+            to="/upi"
+            style={{ color: "white", textDecoration: "none" }}
+          >
+           UPI Address
+          </Link>,
+            <Link
               to="/content_managemenmt"
               style={{ color: "white", textDecoration: "none" }}
             >
@@ -114,11 +120,23 @@ function ResponsiveDrawer(props) {
               Create Coupon
             </Link>,
             <Link
+            to="/commission"
+            style={{ color: "white", textDecoration: "none" }}
+          >
+            Commission
+          </Link>,
+            <Link
               to="/trade_history"
               style={{ color: "white", textDecoration: "none" }}
             >
               Trade History
             </Link>,
+            <Link
+            to="/K3"
+            style={{ color: "white", textDecoration: "none" }}
+          >
+            K3 Game History
+          </Link>,
             <Link
               to="/withdrawal_management"
               style={{ color: "white", textDecoration: "none" }}
