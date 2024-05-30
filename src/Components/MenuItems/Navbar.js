@@ -179,6 +179,12 @@ function ResponsiveDrawer(props) {
      >
        Wingo Result
      </Link>,
+      <Link
+      to="/update_withdraw_request"
+      style={{ color: "white", textDecoration: "none" }}
+    >
+      Update Withdraw Request
+    </Link>,
             <Link
             to="/logout"
             style={{ color: "white", textDecoration: "none" }}
