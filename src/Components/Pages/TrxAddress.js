@@ -30,6 +30,7 @@ const TrxAddress = () => {
         withCredentials: true,
       })
       .then(function (response) {
+        alert("Successful");
         console.log(response);
         setTrx_address("");
         setError("");
@@ -80,6 +81,7 @@ const TrxAddress = () => {
         withCredentials: true,
       })
       .then(function (response) {
+        alert("Successful");
         console.log(response);
         setTrx_address("");
         setError("");

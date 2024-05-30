@@ -11,20 +11,26 @@ import axios from 'axios';
 
 function UPIAddress() {
     const [upi, setUpi] = useState('');
-    const [get, setGet] = useState(0);
-    const [label, Setlabel] = useState('UPI Address');
+    const [qr, setqr] = useState('');
+    const [get1, setGet1] = useState(0);
+    const [get2, setGet2] = useState(0);
+    const [label1, Setlabel1] = useState('UPI Address');
+    const [label2, Setlabel2] = useState('Qr CodeImage Address');
   
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const data={
-            Upi:upi
+            Upi:upi,
+            qrCodeImageAddress:qr
         }
-        axios.post('http://localhost:3000/addid', data, { withCredentials: true })
+        axios.post('http://localhost:3000/createupiaddress', data, { withCredentials: true })
             .then(function (response) {
+                alert("Successful");
                 console.log(response);
                 // Reset the form fields after successful submission
                 setUpi("")
+                setqr('')
             })
             .catch(function (error) {
                 console.error(error);
@@ -33,32 +39,31 @@ function UPIAddress() {
     const handleUpdate = (e) => {
         e.preventDefault();
         const data1={
-            Upi:upi
+            Upi:upi,
+            qrCodeImageAddress:qr
         }
         axios.put('http://localhost:3000/updateupiaddress', data1, { withCredentials: true })
             .then(function (response) {
+                alert("Successful");
                 console.log(response);
                 // Reset the form fields after successful submission
                 setUpi("")
+                setqr("")
             })
             .catch(function (error) {
                 console.error(error);
             });
     };
     const handleGet = () => {
-        axios.get('http://localhost:3000/getid', { withCredentials: true })
+        axios.get('http://localhost:3000/getupiaddress', { withCredentials: true })
             .then((res) => {
-                // Assuming res.data.UPIaddress is an array and you want the last item
-                if (res.data.UPIaddress && Array.isArray(res.data.UPIaddress) && res.data.UPIaddress.length > 0) {
-                    const lastUPIAddress = res.data.UPIaddress[res.data.UPIaddress.length - 1];
-                    
-                    setGet(lastUPIAddress.Upi);
-                    Setlabel('')
-                   console.log(get)
-                } else {
-                    // Handle case where UPIaddress is not present or not an array
-                    console.error('UPIaddress is not available or not in array format');
-                }
+              
+                    setGet1(res.data.UPIaddress[0].Upi);
+                    setGet2(res.data.UPIaddress[0].qrCodeImageAddress);
+                    Setlabel1('')
+                    Setlabel2('')
+                   console.log(get1)
+                   console.log(get2)
             })
             .catch((error) => {
                 console.error(error);
@@ -104,15 +109,27 @@ function UPIAddress() {
                         required
                         fullWidth
                         id="upi"
-                        label={label}
+                        label={label1}
                         name="upi"
                         autoComplete="upi"
                         autoFocus
                         value={upi}
-                        placeholder={get} // Use `get` as the placeholder value
+                        placeholder={get1} // Use `get` as the placeholder value
                         onChange={(e) => setUpi(e.target.value)}
     />
-
+  <TextField
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="qr"
+                        label={label2}
+                        name="qr"
+                        autoComplete="qr"
+                        autoFocus
+                        value={qr}
+                        placeholder={get2} // Use `get` as the placeholder value
+                        onChange={(e) => setqr(e.target.value)}
+    />
 <Box sx={{display:"flex",justifyContent:"space-around",m:3}} >
                             <Button
                                 type="button"

@@ -30,6 +30,7 @@ function Commission_rates() {
 
         axios.put('http://localhost:3000/update-commission-rates', formData, { withCredentials: true })
             .then(function (response) {
+                alert("Successful");
                 console.log(response);
                 // Reset the form fields after successful submission
                 setLevel1('');

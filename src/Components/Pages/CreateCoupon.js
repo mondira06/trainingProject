@@ -26,6 +26,7 @@ const Coupon = () => {
       };
       axios.post('http://localhost:3000/create-coupon', response, { withCredentials: true })
       .then(function (response) {
+        alert("Successful");
         console.log(response);
         setCode('');
         setBonusAmount('null');

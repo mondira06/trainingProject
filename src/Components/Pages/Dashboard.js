@@ -207,7 +207,7 @@ const BoxGrid = () => {
       .catch((err) => {
         console.log("Error while fetching user details:", err);
       });
-  }, []);
+   }, []);
 
   // const handleSubmit = async (event) => {
   //   try {

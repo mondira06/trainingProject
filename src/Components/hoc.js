@@ -11,7 +11,7 @@ export default function withAuth(WrappedComponent) {
 
     React.useEffect(() => {
       if (!token) {
-        navigate('/login', {
+        navigate('/', {
           state: { from: location.pathname }
         });
       }

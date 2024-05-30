@@ -46,6 +46,7 @@ const Coupon = () => {
       if (response.ok) {
         const result = await response.text();
         console.log(result);
+        alert("Successful");
         setMinAmount('');
         setBonusAmount('');
         setAwarded('');

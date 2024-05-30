@@ -19,14 +19,13 @@ import SecurityIcon from "@mui/icons-material/Security";
 import TextSnippetIcon from "@mui/icons-material/TextSnippet";
 import { Link } from "react-router-dom";
 
-import Button from "@mui/material/Button";
 
 import { Hidden } from "@mui/material";
 
 const drawerWidth = 240;
 function ResponsiveDrawer(props) {
   const { window } = props;
-  const [mobileOpen, setMobileOpen, handleLogout] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = React.useState(false);
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -83,30 +82,15 @@ function ResponsiveDrawer(props) {
           >
            UPI Address
           </Link>,
-            <Link
-              to="/content_managemenmt"
-              style={{ color: "white", textDecoration: "none" }}
-            >
-              Content Management
-            </Link>,
+          
             <Link
               to="/user_management"
               style={{ color: "white", textDecoration: "none" }}
             >
               User Management
             </Link>,
-            <Link
-              to="/order_history"
-              style={{ color: "white", textDecoration: "none" }}
-            >
-              Order History
-            </Link>,
-            <Link
-              to="/manual_game"
-              style={{ color: "white", textDecoration: "none" }}
-            >
-              Manual Game
-            </Link>,
+            
+           
             <Link
             to="/game_history"
             style={{ color: "white", textDecoration: "none" }}
@@ -124,12 +108,13 @@ function ResponsiveDrawer(props) {
             style={{ color: "white", textDecoration: "none" }}
           >
             Commission
-          </Link>,
+         
+            </Link>,
             <Link
-              to="/trade_history"
+              to="/notification"
               style={{ color: "white", textDecoration: "none" }}
             >
-              Trade History
+              Notification
             </Link>,
             <Link
             to="/K3"
@@ -138,29 +123,25 @@ function ResponsiveDrawer(props) {
             K3 Game History
           </Link>,
             <Link
+            to="/withdrawal_status"
+            style={{ color: "white", textDecoration: "none" }}
+          >
+            Withdrawal Status
+          </Link>,
+            <Link
               to="/withdrawal_management"
               style={{ color: "white", textDecoration: "none" }}
             >
               Withdrawal Management
             </Link>,
-            <Link
-              to="/recharge_history"
-              style={{ color: "white", textDecoration: "none" }}
-            >
-              Recharge History
-            </Link>,
+          
             <Link
               to="/reward_management"
               style={{ color: "white", textDecoration: "none" }}
             >
               Reward Management
             </Link>,
-            <Link
-              to="/complaints"
-              style={{ color: "white", textDecoration: "none" }}
-            >
-              Complaints
-            </Link>,
+           
           <Link
           to="/commission_level"
           style={{ color: "white", textDecoration: "none" }}
@@ -183,7 +164,7 @@ function ResponsiveDrawer(props) {
             to="/logout"
             style={{ color: "white", textDecoration: "none" }}
           >
-            <b>LOG OUT</b>
+            <b>LogOut</b>
           </Link>,
           ].map((text, inde) => (
             <ListItem key={text} disablePadding>
