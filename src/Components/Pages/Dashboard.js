@@ -137,13 +137,12 @@ const BoxGrid = () => {
   const [successRecharge, setSuccessRecharge] = useState(0);
   const [totalWithdrawal, setTotalWithdrawal] = useState(0);
 
-
-
-
   useEffect(() => {
     // Fetch today's user registrations count
     axios
-      .get("http://localhost:3000/todays-registrations", { withCredentials: true })
+      .get("http://localhost:3000/todays-registrations", {
+        withCredentials: true,
+      })
       .then((res) => {
         setData(res.data.countOfDailyUsers);
       })
@@ -151,7 +150,7 @@ const BoxGrid = () => {
         console.log("Error while fetching today's registration:", err);
       });
     axios
-      .get("http://localhost:3000/user-balance" , { withCredentials: true })
+      .get("http://localhost:3000/user-balance", { withCredentials: true })
       .then((res) => {
         setUserBalance(res.data.walletAmount);
       })
@@ -159,7 +158,9 @@ const BoxGrid = () => {
         console.log("Error while fetching user balance:", err);
       });
     axios
-      .get("http://localhost:3000/transactions-last-24-hours", { withCredentials: true })
+      .get("http://localhost:3000/transactions-last-24-hours", {
+        withCredentials: true,
+      })
       .then((res) => {
         setTodayrecharge(res.data.totalRechargeAmount);
       })
@@ -168,22 +169,28 @@ const BoxGrid = () => {
       });
 
     axios
-      .get("http://localhost:3000/total-withdraw-amount-last-24-hours", { withCredentials: true })
+      .get("http://localhost:3000/total-withdraw-amount-last-24-hours", {
+        withCredentials: true,
+      })
       .then((res) => {
         setTodayWithdrawal(res.data.totalWithdrawAmount);
       })
       .catch((err) => {
         console.log("Error while fetching withdraw details:", err);
       });
-      axios
-      .get("http://localhost:3000/total-registrations", { withCredentials: true })
+
+    axios
+      .get("http://localhost:3000/total-registrations", {
+        withCredentials: true,
+      })
       .then((res) => {
         setTotalUser(res.data.count);
       })
       .catch((err) => {
         console.log("Error while fetching user details:", err);
       });
-      axios
+
+    axios
       .get("http://localhost:3000/pending-recharge", { withCredentials: true })
       .then((res) => {
         setPendingRecharge(res.data.pendingAmount);
@@ -191,6 +198,7 @@ const BoxGrid = () => {
       .catch((err) => {
         console.log("Error while fetching user details:", err);
       });
+
       axios
       .get("http://localhost:3000/success-recharge", { withCredentials: true })
       .then((res) => {
@@ -267,7 +275,7 @@ const BoxGrid = () => {
     { heading: "Total User", value: totalUser },
     { heading: "Pending Recharges", value: pendingRecharge },
     { heading: "Success Recharge", value: successRecharge },
-    { heading: "Total Withdrawal", value: totalWithdrawal},
+    { heading: "Total Withdrawal", value: totalWithdrawal },
     { heading: "Withdrawal Requests", value: 0 },
     { heading: "Website Mode", value: 0 },
     { heading: "Withdrawal Status", value: 0 },
@@ -278,9 +286,9 @@ const BoxGrid = () => {
       sx={{
         display: "flex",
         justifyContent: "flex-end",
-        width: { sm: `calc(100% - 240px)` }, 
-        position: "absolute", 
-        right: 0, 
+        width: { sm: `calc(100% - 240px)` },
+        position: "absolute",
+        right: 0,
       }}
     >
       <Grid container spacing={3}>
