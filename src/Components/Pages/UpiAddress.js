@@ -8,7 +8,6 @@ import {
     CssBaseline
 } from "@mui/material";
 import axios from 'axios';
-
 function UPIAddress() {
     const [upi, setUpi] = useState('');
     const [qr, setqr] = useState('');
@@ -16,8 +15,6 @@ function UPIAddress() {
     const [get2, setGet2] = useState(0);
     const [label1, Setlabel1] = useState('UPI Address');
     const [label2, Setlabel2] = useState('Qr CodeImage Address');
-  
-
     const handleSubmit = (e) => {
         e.preventDefault();
         const data={
@@ -57,7 +54,6 @@ function UPIAddress() {
     const handleGet = () => {
         axios.get('http://localhost:3000/getupiaddress', { withCredentials: true })
             .then((res) => {
-              
                     setGet1(res.data.UPIaddress[0].Upi);
                     setGet2(res.data.UPIaddress[0].qrCodeImageAddress);
                     Setlabel1('')
@@ -69,9 +65,6 @@ function UPIAddress() {
                 console.error(error);
             });
     };
-    
-   
-
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline />
@@ -137,7 +130,6 @@ function UPIAddress() {
                                 variant="contained"
                                sx={{m:1}}
                                onClick={handleSubmit}
-                             
                             >
                                 Insert
                             </Button>
@@ -167,5 +159,7 @@ function UPIAddress() {
         </Container>
     );
 }
-
 export default UPIAddress;
+
+
+

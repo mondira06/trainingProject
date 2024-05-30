@@ -8,31 +8,30 @@ import {
   CssBaseline,
 } from "@mui/material";
 import axios from "axios";
-import Cookies from "js-cookie";
 
 const TrxAddress = () => {
   const [trx_address, setTrx_address] = useState("");
+  const [qrCodeImageAddress, setQrCodeImageAddress] = useState("");
   const [error, setError] = useState("");
   const [get, setGet] = useState("");
-  const [label, setLabel] = useState("");
+  const [get1, setGet1] = useState("");
+  const [label, setLabel] = useState("TRX Address");
+  const [label1, setLabel1] = useState("QR Code Image Address");
   const handleInsert = async (event) => {
     event.preventDefault();
     const response = {
       TRXAddress: trx_address,
+      qrCodeImageAddress: qrCodeImageAddress,
     };
-    const token = Cookies.get("token");
     axios
       .post("http://localhost:3000/CreateAddress", response, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
         withCredentials: true,
       })
       .then(function (response) {
         alert("Successful");
         console.log(response);
         setTrx_address("");
+        setQrCodeImageAddress("");
         setError("");
       })
       .catch(function (error) {
@@ -42,53 +41,40 @@ const TrxAddress = () => {
         );
       });
   };
-
   const handleGet = () => {
     axios
       .get("http://localhost:3000/getAddresses", { withCredentials: true })
       .then((res) => {
-        // Assuming res.data.UPIaddress is an array and you want the last item
-        if (
-          res.data.addresses &&
-          Array.isArray(res.data.addresses) &&
-          res.data.addresses.length > 0
-        ) {
-          const lastaddresses =
-            res.data.addresses[res.data.addresses.length - 1];
-          setGet(lastaddresses.TRXAddress);
-          setLabel("");
-          console.log(get);
-        } else {
-          // Handle case where UPIaddress is not present or not an array
-          console.error("UPIaddress is not available or not in array format");
-        }
+        console.log(res.data.addresses[0].TRXAddress);
+        setGet(res.data.addresses[0].TRXAddress);
+        setGet1(res.data.addresses[0].qrCodeImageAddress);
+        setLabel("");
+        setLabel1("");
+        console.log(get);
+        console.log(get1);
       })
       .catch((error) => {
         console.error(error);
       });
   };
-  const handleUpdate = async () => {
-    const response = {
+  const handleUpdate = (event) => {
+    event.preventDefault();
+    const data1 = {
       TRXAddress: trx_address,
+      qrCodeImageAddress: qrCodeImageAddress,
     };
-    const token = Cookies.get("token");
     axios
-      .put("http://localhost:3000/updateaddress", response, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
+      .put("http://localhost:3000/updateAddress", data1, {
         withCredentials: true,
       })
       .then(function (response) {
         alert("Successful");
         console.log(response);
         setTrx_address("");
-        setError("");
+        setQrCodeImageAddress("");
       })
       .catch(function (error) {
         console.error(error);
-        setError("Update failed. Please check your inputs and try again.");
       });
   };
 
@@ -96,85 +82,95 @@ const TrxAddress = () => {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <Box
+        component="main"
         sx={{
-          display: "flex",
-          justifyContent: "flex-end",
-          width: { sm: `calc(100% - 240px)` },
-          position: "absolute",
-          right: 0,
+          marginTop: 8,
+          backgroundColor: "#D9D9D9",
+          flexGrow: 2,
+          p: 2,
         }}
       >
         <Box
           component="main"
           sx={{
-            marginTop: 8,
-            backgroundColor: "#D9D9D9",
-            flexGrow: 1,
+            backgroundColor: "white",
+            flexGrow: 2,
             p: 1,
-            width: 800,
-            width: { xs: `calc(100% - 24px)` },
           }}
         >
           <Box
-            component="main"
             sx={{
-              backgroundColor: "white",
-              flexGrow: 2,
-              p: 2,
+              marginTop: 4,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
             }}
           >
-            <Box
-              sx={{
-                marginTop: 4,
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              <Typography component="h1" variant="h5">
-                TRX Address
-              </Typography>
-              {error && <Typography color="error">{error}</Typography>}
-              <Box component="form" noValidate sx={{ mt: 1 }}>
-                <TextField
-                  margin="normal"
-                  required
+            <Typography component="h1" variant="h5">
+              TRX Address
+            </Typography>
+            <Box component="form" noValidate sx={{ mt: 1 }}>
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="trx_address"
+                label={label}
+                name="trx_address"
+                placeholder={get}
+                autoComplete="trx_address"
+                autoFocus
+                value={trx_address}
+                onChange={(event) => setTrx_address(event.target.value)}
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="qrCodeImageAddress"
+                label={label1}
+                name="qrCodeImageAddress"
+                placeholder={get1}
+                autoComplete="qrCodeImageAddress"
+                autoFocus
+                value={qrCodeImageAddress}
+                onChange={(event) => setQrCodeImageAddress(event.target.value)}
+              />
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-around",
+                  m: 3,
+                  mb: 2,
+                }}
+              >
+                <Button
+                  type="button"
                   fullWidth
-                  id="trx_address"
-                  label={label}
-                  name="trx_address"
-                  autoComplete="trx_address"
-                  autoFocus
-                  value={trx_address}
-                  placeholder={get}
-                  onChange={(e) => setTrx_address(e.target.value)}
-                />
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    mt: 3,
-                    mb: 2,
-                  }}
+                  variant="contained"
+                  sx={{ m: 1 }}
+                  onClick={handleInsert}
                 >
-                  <Button
-                    onClick={handleInsert}
-                    variant="contained"
-                    sx={{ mr: 1 }}
-                  >
-                    Insert
-                  </Button>
-                  <Button
-                    onClick={handleGet}
-                    variant="contained"
-                    sx={{ mr: 1 }}
-                  >
-                    Get
-                  </Button>
-                  <Button onClick={handleUpdate} variant="contained">
-                    Update
-                  </Button>
-                </Box>
+                  Insert
+                </Button>
+                <Button
+                  type="button"
+                  fullWidth
+                  variant="contained"
+                  sx={{ m: 1 }}
+                  onClick={handleGet}
+                >
+                  Get
+                </Button>
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  sx={{ m: 1 }}
+                  onClick={handleUpdate}
+                >
+                  Update
+                </Button>
               </Box>
             </Box>
           </Box>

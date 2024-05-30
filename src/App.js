@@ -21,9 +21,14 @@ import Commission_rates from "./Components/Pages/Commission_rates";
 import UPIAddress from "./Components/Pages/UpiAddress";
 import GameHistory from "./Components/Pages/Gamehistory";
 import K3History from "./Components/Pages/K3History";
+<<<<<<< HEAD
 import Notification from "./Components/Pages/Notification";
 import Withdrawal from "./Components/Pages/ManageWithdrawalRequest";
 import UserManage from "./Components/Pages/UserManage";
+=======
+import UpdateWithdrawRequest from "./Components/Pages/UpdateWithdrawRequest";
+
+>>>>>>> ffcb562f9bb0a6f74e22c13b10cb33c42a32c3ab
 function App() {
   const location = useLocation();
   const renderNavbar = location.pathname !== "/";
@@ -32,7 +37,10 @@ function App() {
       {renderNavbar && <Navbar />}
       <AuthProvider>
         <Routes>
+<<<<<<< HEAD
           <Route path={"/"} element={<LoginPage />} />
+=======
+>>>>>>> ffcb562f9bb0a6f74e22c13b10cb33c42a32c3ab
           <Route
             path={"/manage_admin"}
             element={
@@ -121,11 +129,11 @@ function App() {
               </ProtectedRoute>
             }
           />
-        <Route
+          <Route
             path={"/wingo_result"}
             element={
               <ProtectedRoute>
-                <WingoResult/>
+                <WingoResult />
               </ProtectedRoute>
             }
           />
@@ -146,6 +154,7 @@ function App() {
             }
           />
         </Routes>
+<<<<<<< HEAD
       <Routes>
        
         <Route path={"/manage_admin"} element={<ProtectedRoute><ManageUser /></ProtectedRoute>} />
@@ -173,6 +182,119 @@ function App() {
     />
         <Route path={"/manage_task"} element={<ProtectedRoute><ManageTask /></ProtectedRoute>} />
       </Routes>
+=======
+        <Routes>
+          <Route path={"/"} element={<LoginPage />} />
+          <Route
+            path={"/manage_admin"}
+            element={
+              <ProtectedRoute>
+                <ManageUser />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={"/website_setting"}
+            element={
+              <ProtectedRoute>
+                <AmountSetup />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={"/reward_management"}
+            element={
+              <ProtectedRoute>
+                <Rewardsystem />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={"/winner"}
+            element={
+              <ProtectedRoute>
+                <ManageWinner />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={"/manage_role"}
+            element={
+              <ProtectedRoute>
+                <ManageRole />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={"/logout"}
+            element={
+              <ProtectedRoute>
+                <LogOut />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={"/commission"}
+            element={
+              <ProtectedRoute>
+                <Commission_rates />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={"/upi"}
+            element={
+              <ProtectedRoute>
+                <UPIAddress />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={"/game_history"}
+            element={
+              <ProtectedRoute>
+                <GameHistory />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={"/K3"}
+            element={
+              <ProtectedRoute>
+                <K3History />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={"/update_withdraw_request"}
+            element={
+              <ProtectedRoute>
+                <UpdateWithdrawRequest />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={"/withdrawal_management"}
+            element={<ManageWithdrawalRequest />}
+          />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={"/manage_task"}
+            element={
+              <ProtectedRoute>
+                <ManageTask />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+>>>>>>> ffcb562f9bb0a6f74e22c13b10cb33c42a32c3ab
       </AuthProvider>
     </div>
   );
