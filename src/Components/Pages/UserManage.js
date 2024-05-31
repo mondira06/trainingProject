@@ -3,25 +3,24 @@ import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import Typography from "@mui/material/Typography";
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
-import DialogContent from '@mui/material/DialogContent';
-import DialogActions from '@mui/material/DialogActions';
-import TextField from '@mui/material/TextField';
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogTitle from "@mui/material/DialogTitle";
+import DialogContent from "@mui/material/DialogContent";
+import DialogActions from "@mui/material/DialogActions";
+import TextField from "@mui/material/TextField";
 import axios from "axios";
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
 import Cookies from "js-cookie";
 
 const drawerWidth = 240;
 
 function UserManage(props) {
- 
   const [rows, setRows] = useState([]);
   const [search, setSearch] = useState([]);
 
@@ -29,9 +28,11 @@ function UserManage(props) {
   const [mobile, setMobile] = useState("");
   const [password, setPassword] = useState("");
 
-const [setData]=useState('')
+  const [setData] = useState("");
+
   useEffect(() => {
-    axios.get("http://localhost:3000/fetchuserdetails", { withCredentials: true })
+    axios
+      .get("http://localhost:3000/fetchuserdetails", { withCredentials: true })
       .then((res) => {
         console.log(res.data);
         setRows(res.data.users);
@@ -41,25 +42,22 @@ const [setData]=useState('')
       });
   }, []);
 
-  // const handleDeleteUser = (mobile) => {
-  //   console.log(mobile);
-  //   const token = Cookies.get('token');
-  //   axios.delete(`http://localhost:3000/deleteuser`, { mobile: mobile }, { withCredentials: true }, {
-  //     headers: {
-  //       Authorization: `Bearer ${token}`,
-  //       "Content-Type": "application/json",
-  //     },
-  //   })
-  //     .then((res) => {
-  //       console.log("User deleted successfully.");
-  //       const updatedRows = rows.filter(user => user.mobile !== mobile);
-  //       setRows(updatedRows);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error deleting user:", error);
-  //     });
-  // };
- 
+  const handleDeleteUser = (mobile) => {
+    console.log(mobile);
+    axios
+      .delete("http://localhost:3000/deleteuser", {
+        data: { mobile: mobile },
+        withCredentials: true,
+      })
+      .then((res) => {
+        console.log("User deleted successfully.");
+        const updatedRows = rows.filter((user) => user.mobile !== mobile);
+        setRows(updatedRows);
+      })
+      .catch((error) => {
+        console.error("Error deleting user:", error);
+      });
+  };
 
   const handleReRegister = () => {
     setOpen(true);
@@ -73,12 +71,14 @@ const [setData]=useState('')
     const data = {
       mobile: mobile,
       password: password,
-      
     };
-    axios.post("http://localhost:3000/re-register", data, { withCredentials: true })
+    axios
+      .post("http://localhost:3000/re-register", data, {
+        withCredentials: true,
+      })
       .then((res) => {
         alert("User re-registered successfully.");
-        setData('');
+        setData("");
         setRows([...rows, res.data.user]);
         setOpen(false);
       })
@@ -111,15 +111,14 @@ const [setData]=useState('')
           <Typography variant="h5" sx={{ p: 3 }}>
             User Management
           </Typography>
-          <Box sx={{ display: "flex", justifyContent: "flex-end", marginRight: 3 }}>
+          <Box
+            sx={{ display: "flex", justifyContent: "flex-end", marginRight: 3 }}
+          >
             <Button variant="contained" onClick={handleReRegister}>
-              
               Re-register
             </Button>
           </Box>
-          <Box display= "flex" justifyContent= "flex-end">
-           
-          </Box>
+          <Box display="flex" justifyContent="flex-end"></Box>
           <Box
             sx={{
               padding: 2,
@@ -131,12 +130,24 @@ const [setData]=useState('')
               <Table aria-label="customized table">
                 <TableHead>
                   <TableRow>
-                    <TableCell align="center"><b>Sr No</b></TableCell>
-                    <TableCell align="center"><b>Username</b></TableCell>
-                    <TableCell align="center"><b>Mobile</b></TableCell>
-                    <TableCell align="center"><b>UID</b></TableCell>
-                    <TableCell align="center"><b>Wallet Amount</b></TableCell>
-                    <TableCell align="center"><b>Action</b></TableCell>
+                    <TableCell align="center">
+                      <b>Sr No</b>
+                    </TableCell>
+                    <TableCell align="center">
+                      <b>Username</b>
+                    </TableCell>
+                    <TableCell align="center">
+                      <b>Mobile</b>
+                    </TableCell>
+                    <TableCell align="center">
+                      <b>UID</b>
+                    </TableCell>
+                    <TableCell align="center">
+                      <b>Wallet Amount</b>
+                    </TableCell>
+                    <TableCell align="center">
+                      <b>Action</b>
+                    </TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -148,7 +159,12 @@ const [setData]=useState('')
                       <TableCell align="center">{user.uid}</TableCell>
                       <TableCell align="center">{user.walletAmount}</TableCell>
                       <TableCell align="center">
-                        <Button variant="contained"  /*onClick={() => handleDeleteUser(user.mobile)}*/>Delete</Button> 
+                        <Button
+                          variant="contained"
+                          onClick={() => handleDeleteUser(user.mobile)}
+                        >
+                          Delete
+                        </Button>
                       </TableCell>
                     </TableRow>
                   ))}
@@ -176,11 +192,14 @@ const [setData]=useState('')
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-           
             </DialogContent>
             <DialogActions>
-              <Button variant="contained" onClick={handleClose}>Cancel</Button>
-              <Button variant="contained" onClick={handleReRegisterSubmit}>Re-register</Button>
+              <Button variant="contained" onClick={handleClose}>
+                Cancel
+              </Button>
+              <Button variant="contained" onClick={handleReRegisterSubmit}>
+                Re-register
+              </Button>
             </DialogActions>
           </Dialog>
           <hr />
